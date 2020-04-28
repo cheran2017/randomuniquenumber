@@ -10,18 +10,13 @@
 <button type="button" class="btn btn-primary" onclick="refresh()">Generate Random Number</button>
 
 <script type="text/javascript">
-	var numbers = [1,2,3,4,5,6,7,8];
-    randomNumbers = [];
-    length = numbers.length;
-    unique_number = 0;
-
-	while (length--) {
-	    unique_number = Math.floor(Math.random() * (length+1));
-	    randomNumbers.push(numbers[unique_number]);
-	    numbers.splice(unique_number,1);
+	var unique_numbers = [];
+	while(unique_numbers.length < 8){
+	    var number = Math.floor(Math.random() * 9) + 1;
+	    if(unique_numbers.indexOf(number) === -1) unique_numbers.push(number);
 	}
-	console.log(randomNumbers)
-	document.getElementById("eightrandom").innerHTML= randomNumbers.join(' ');
+
+	document.getElementById("eightrandom").innerHTML=unique_numbers.join('');
 
 	function refresh() {
 		 location.reload();
