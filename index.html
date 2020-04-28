@@ -10,13 +10,25 @@
 <button type="button" class="btn btn-primary" onclick="refresh()">Generate Random Number</button>
 
 <script type="text/javascript">
-	var unique_numbers = [];
-	while(unique_numbers.length < 8){
-	    var number = Math.floor(Math.random() * 9) + 1;
-	    if(unique_numbers.indexOf(number) === -1) unique_numbers.push(number);
-	}
+	var min = 10000000; var max=90000000;
+	function generateNum () {
+	  var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+	  var numberArray = Array.from(randomNumber.toString());
 
-	document.getElementById("eightrandom").innerHTML=unique_numbers.join('');
+	  var unique = numberArray.reduce(function(a,b){
+	    if (a.indexOf(b) < 0 ) a.push(b);
+	    return a;
+	  },[]);
+	 // alert('old'+numberArray.length)
+	  //alert('new'+unique.length)
+	  if(numberArray.length == unique.length){
+	  	document.getElementById("eightrandom").innerHTML=numberArray.join('');
+	  	return false
+	  } else {
+	  	return generateNum()
+	  }
+	}
+	generateNum()
 
 	function refresh() {
 		 location.reload();
