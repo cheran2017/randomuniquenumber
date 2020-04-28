@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Number</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body class="text-center">
+
+<h1 id="eightrandom"></h1>
+<button type="button" class="btn btn-primary" onclick="refresh()">Generate Random Number</button>
+
+<script type="text/javascript">
+	var numbers = [1,2,3,4,5,6,7,8,9,10];
+    randomNumbers = [];
+    length = numbers.length;
+    unique_number = 0;
+
+	while (length--) {
+	    unique_number = Math.floor(Math.random() * (length+1));
+	    randomNumbers.push(numbers[unique_number]);
+	    numbers.splice(unique_number,1);
+	}
+	console.log(randomNumbers)
+	document.getElementById("eightrandom").innerHTML= randomNumbers.join(' ');
+
+	function refresh() {
+		 location.reload();
+	}
+</script>
+</body>
+</html>
